@@ -18,3 +18,5 @@ Endpoints: GET /health (checks database connectivity), GET /count, GET /song, GE
 `docker run --rm -p 8080:8080 -e MONGODB_SERVICE=mongo songs`
 
 The MongoDB hostname must be reachable from the application container.
+
+GET /song returns an object with a songs array. Successful PUT responses use HTTP 201, matching the course API contract.

@@ -32,7 +32,7 @@ def count():
 
 @app.get('/song')
 def get_songs():
-    return jsonify(list(collection.find({}, {'_id': 0}))), 200
+    return jsonify(songs=list(collection.find({}, {'_id': 0}))), 200
 
 @app.get('/song/<int:id>')
 def get_song(id):
@@ -60,7 +60,7 @@ def update_song(id):
     result = collection.update_one({'id': id}, {'$set': song})
     if not result.matched_count:
         abort(404)
-    return jsonify(collection.find_one({'id': id}, {'_id': 0})), 200
+    return jsonify(collection.find_one({'id': id}, {'_id': 0})), 201
 
 @app.delete('/song/<int:id>')
 def delete_song(id):
